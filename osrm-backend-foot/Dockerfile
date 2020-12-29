@@ -21,7 +21,7 @@ run apt-get update && \
 run curl https://download.geofabrik.de/europe/great-britain/scotland-latest.osm.pbf >/opt/scotland-latest.osm.pbf
 
 # Ask OSM's Nominatim service for Inverness' bounds, then create our
-# own extract that only contains Inverness from the wider Scotlan
+# own extract that only contains Inverness from the wider Scotland
 # extract.
 run BOUNDS=$(curl \
               -H "User-Agent: ActiveTravel-Inverness-Router-Builder/2020.12.29" \
@@ -51,5 +51,9 @@ from osrm/osrm-backend:latest
 # Copy across the pre-calculated routing graph.
 copy --from=builder /opt/inverness.osrm* /opt/
 
+# We're going to publish two copies of the router. This copy (walking)
+# of the server will run on port 5001.
+expose 5001
+
 # Run the server and respond to requests.
-cmd [ "osrm-routed", "--algorithm", "mld", "/opt/inverness.osrm" ]
+cmd [ "osrm-routed", "--port", "5001", "--algorithm", "mld", "/opt/inverness.osrm" ]
