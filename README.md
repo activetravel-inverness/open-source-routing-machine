@@ -2,12 +2,16 @@
  
 Docker configuration for an active-travel router for the Inverness area.
 
-## [osrm-backend-foot](./osrm-backend-foot/Dockerfile)
+## Walking Directions
+
+[osrm-backend-foot](./osrm-backend-foot/Dockerfile)
 
 An extension of the osrm-backend image that provides walking directions
 for the Inverness area.
 
-## [osrm-backend-bicycle](./osrm-backend-bicycle/Dockerfile)
+## Cycling Directions
+
+[osrm-backend-bicycle](./osrm-backend-bicycle/Dockerfile)
 
 An extension of the osrm-backend image that provides cycling directions
 for the Inverness area.
