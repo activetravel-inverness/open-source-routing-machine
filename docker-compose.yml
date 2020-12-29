@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  osrm-backend-foot:
+    image: activetravel-inverness/osrm-backend-foot
+    build: ./osrm-backend-foot
+    networks:
+      - osrm
+    ports:
+      - "5001:5001"
+
+  osrm-backend-bicycle:
+    image: activetravel-inverness/osrm-backend-bicycle
+    build: ./osrm-backend-bicycle
+    networks:
+      - osrm
+    ports:
+      - "5002:5002"
+
+networks:
+  osrm:
+    driver: overlay
