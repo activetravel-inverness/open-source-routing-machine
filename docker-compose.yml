@@ -6,16 +6,20 @@ services:
     build: ./osrm-backend-foot
     networks:
       - osrm
-    ports:
-      - "5001:5001"
 
   osrm-backend-bicycle:
     image: activetravel-inverness/osrm-backend-bicycle
     build: ./osrm-backend-bicycle
     networks:
       - osrm
+
+  osrm-nginx-reverse-proxy:
+    image: activetravel-inverness/osrm-nginx-reverse-proxy
+    build: ./osrm-nginx-reverse-proxy
+    networks:
+      - osrm
     ports:
-      - "5002:5002"
+      - "80:80"
 
 networks:
   osrm:
